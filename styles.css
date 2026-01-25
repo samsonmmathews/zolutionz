@@ -132,3 +132,58 @@ nav a.active::after {
 .feature:hover {
     transform: translateY(-6px);
 }
+
+.testimonials h1 {
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 50px;
+    max-width: 600px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.testimonial {
+    background: rgba(0, 0, 0, 0.35);
+    border-left: 4px solid #ff6b00;
+    padding: 30px 25px;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-4px);
+}
+
+.quote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.quote::before {
+    content: "“";
+    font-size: 4rem;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: rgba(255,255,255,0.15);
+}
+
+.author {
+    display: block;
+    font-weight: bold;
+    color: #ff6b00;
+}
+
+.role {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+}
