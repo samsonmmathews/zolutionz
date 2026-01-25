@@ -16,16 +16,18 @@
 
     /* SURFACES */
     --bg: #FFFFFF;
-    --nav-bg: rgba(30, 64, 175, 0.95);
-    --surface: rgba(255, 255, 255, 0.88);
-    --surface-soft: rgba(255, 255, 255, 0.75);
+    --nav-bg: rgba(30, 64, 175, 0.96);
+
+    /* FOOTER LINKS */
+    --footer-link: #F97316;
+    --footer-link-hover: #FDBA74;
 
     /* UI */
     --border-radius: 14px;
 }
 
 /* ===============================
-   GLOBAL
+   GLOBAL RESET
 ================================ */
 * {
     box-sizing: border-box;
@@ -36,6 +38,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background: var(--bg);
     color: var(--text);
+    overflow-x: hidden;
 }
 
 a {
@@ -44,7 +47,7 @@ a {
 }
 
 /* ===============================
-   BACKGROUND IMAGE
+   BACKGROUND IMAGE (STATIC)
 ================================ */
 body::before {
     content: "";
@@ -54,7 +57,8 @@ body::before {
         linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
         url('primos1.png') center / cover no-repeat;
     z-index: -1;
-    filter: blur(8px);
+    pointer-events: none;
+    filter: blur(5px);
 }
 
 /* ===============================
@@ -66,6 +70,9 @@ nav {
     align-items: center;
     padding: 18px 8%;
     background: var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -87,17 +94,19 @@ nav a {
     font-weight: 600;
     color: #fff;
     position: relative;
+    padding-bottom: 4px;
 }
 
 nav a::after {
     content: "";
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 2px;
     background: var(--accent);
     transform: scaleX(0);
+    transform-origin: left;
     transition: transform 0.25s ease;
 }
 
@@ -107,37 +116,7 @@ nav a.active::after {
 }
 
 /* ===============================
-   CONTENT CONTAINER
-================================ */
-.container {
-    max-width: 1200px;
-    margin: 80px auto;
-    padding: 80px 8%;
-    background: var(--surface-soft);
-    border-radius: var(--border-radius);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
-}
-
-.container h1 {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    color: var(--primary);
-    margin-bottom: 20px;
-}
-
-.container h3 {
-    margin-top: 40px;
-    font-weight: 600;
-    color: var(--primary);
-}
-
-.container p {
-    line-height: 1.75;
-    color: var(--text);
-}
-
-/* ===============================
-   HERO
+   HERO (MAIN FOCUS)
 ================================ */
 .hero {
     min-height: 85vh;
@@ -145,11 +124,11 @@ nav a.active::after {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 0 20px;
 }
 
 .hero-content {
     max-width: 900px;
-    padding: 0 20px;
 }
 
 .hero-content h1 {
@@ -159,13 +138,7 @@ nav a.active::after {
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-    color: var(--text-on-dark);
-    font-size: 1.25rem;
-    margin-bottom: 35px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.55);
 }
 
 .hero-subtitle {
@@ -173,7 +146,7 @@ nav a.active::after {
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     margin-bottom: 35px;
     font-weight: 500;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* ===============================
@@ -195,6 +168,35 @@ nav a.active::after {
 }
 
 /* ===============================
+   PAGE CONTENT (NON-HERO)
+================================ */
+.container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 70px 8%;
+    background: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.container h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.container h3 {
+    margin-top: 40px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.container p {
+    line-height: 1.75;
+    color: var(--text);
+}
+
+/* ===============================
    GRIDS
 ================================ */
 .features,
@@ -211,10 +213,10 @@ nav a.active::after {
 ================================ */
 .feature,
 .testimonial {
-    background: var(--surface);
+    background: #ffffff;
     padding: 30px;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .testimonial {
@@ -232,28 +234,62 @@ nav a.active::after {
 }
 
 /* ===============================
-   FOOTER
+   FOOTER (COMPACT)
 ================================ */
 footer {
     background: #020617;
     color: var(--text-on-dark);
+    padding: 32px 20px;
     text-align: center;
-    padding: 40px 20px;
 }
 
-footer p,
-footer a,
+footer h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    margin-bottom: 18px;
+    background: transparent;
+    padding: 0;
+}
+
+footer nav a {
+    color: var(--footer-link);
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+footer nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--footer-link);
+    transition: width 0.25s ease;
+}
+
+footer nav a:hover::after {
+    width: 100%;
+}
+
 .footer-bottom {
+    font-size: 0.8rem;
     color: var(--muted-on-dark);
 }
 
-.footer-bottom {
-    font-size: 0.9rem;
-}
-
-/* =================================================
-   📱 MOBILE OPTIMIZATION
-================================================= */
+/* ===============================
+   MOBILE
+================================ */
 @media (max-width: 768px) {
 
     nav {
@@ -268,39 +304,24 @@ footer a,
         gap: 14px;
     }
 
-    .logo {
-        font-size: 1.2rem;
-        letter-spacing: 1.5px;
-    }
-
-    .container {
-        margin: 50px auto;
-        padding: 50px 6%;
-        background: var(--surface);
-    }
-
     .hero {
         min-height: 75vh;
-    }
-
-    .hero-content h1 {
-        letter-spacing: 2px;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
     }
 
     .btn {
         width: 100%;
         max-width: 320px;
-        padding: 14px 28px;
+    }
+
+    .container {
+        margin: 50px auto;
+        padding: 50px 6%;
     }
 }
 
-/* =================================================
-   📲 TABLET OPTIMIZATION
-================================================= */
+/* ===============================
+   TABLET
+================================ */
 @media (min-width: 769px) and (max-width: 1024px) {
 
     nav {
@@ -308,14 +329,10 @@ footer a,
     }
 
     .container {
-        padding: 70px 7%;
+        padding: 60px 7%;
     }
 
     .hero-content h1 {
-        font-size: 3rem;
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
+        font-size: 3.2rem;
     }
 }
