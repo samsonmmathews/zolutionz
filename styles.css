@@ -4,16 +4,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* COLOR SCHEME #1 — Blue & Orange */
+    /* BRAND COLORS */
     --primary: #1E40AF;
     --accent: #F97316;
-    --bg: #ffffff;
+
+    /* TEXT */
     --text: #1F2937;
     --muted: #6B7280;
+    --text-on-dark: #F9FAFB;
+    --muted-on-dark: #E5E7EB;
 
+    /* SURFACES */
+    --bg: #FFFFFF;
     --nav-bg: rgba(30, 64, 175, 0.95);
-    --card-bg: rgba(255, 255, 255, 0.92);
-    --border-radius: 10px;
+    --surface: rgba(255, 255, 255, 0.88);
+    --surface-soft: rgba(255, 255, 255, 0.75);
+
+    /* UI */
+    --border-radius: 14px;
 }
 
 /* ===============================
@@ -26,8 +34,8 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    color: var(--text);
     background: var(--bg);
+    color: var(--text);
 }
 
 a {
@@ -43,7 +51,7 @@ body::before {
     position: fixed;
     inset: 0;
     background:
-        linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
         url('primos1.png') center / cover no-repeat;
     z-index: -1;
     filter: blur(8px);
@@ -99,25 +107,31 @@ nav a.active::after {
 }
 
 /* ===============================
-   CONTAINERS
+   CONTENT CONTAINER
 ================================ */
 .container {
     max-width: 1200px;
-    margin: auto;
+    margin: 80px auto;
     padding: 80px 8%;
+    background: var(--surface-soft);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
 }
 
-h1 {
+.container h1 {
     font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--primary);
     margin-bottom: 20px;
 }
 
-h3 {
+.container h3 {
     margin-top: 40px;
     font-weight: 600;
+    color: var(--primary);
 }
 
-p {
+.container p {
     line-height: 1.75;
     color: var(--text);
 }
@@ -139,15 +153,27 @@ p {
 }
 
 .hero-content h1 {
-    color: #fff;
+    color: var(--text-on-dark);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 .hero-content p {
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--text-on-dark);
     font-size: 1.25rem;
     margin-bottom: 35px;
+}
+
+.hero-subtitle {
+    color: var(--text-on-dark);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    margin-bottom: 35px;
+    font-weight: 500;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
 }
 
 /* ===============================
@@ -185,9 +211,10 @@ p {
 ================================ */
 .feature,
 .testimonial {
-    background: var(--card-bg);
+    background: var(--surface);
     padding: 30px;
     border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .testimonial {
@@ -208,10 +235,16 @@ p {
    FOOTER
 ================================ */
 footer {
-    background: #0f172a;
-    color: #cbd5f5;
+    background: #020617;
+    color: var(--text-on-dark);
     text-align: center;
     padding: 40px 20px;
+}
+
+footer p,
+footer a,
+.footer-bottom {
+    color: var(--muted-on-dark);
 }
 
 .footer-bottom {
@@ -219,7 +252,7 @@ footer {
 }
 
 /* =================================================
-   📱 MOBILE OPTIMIZATION (Phones)
+   📱 MOBILE OPTIMIZATION
 ================================================= */
 @media (max-width: 768px) {
 
@@ -241,7 +274,9 @@ footer {
     }
 
     .container {
-        padding: 60px 6%;
+        margin: 50px auto;
+        padding: 50px 6%;
+        background: var(--surface);
     }
 
     .hero {
@@ -257,9 +292,9 @@ footer {
     }
 
     .btn {
-        padding: 14px 28px;
         width: 100%;
         max-width: 320px;
+        padding: 14px 28px;
     }
 }
 
