@@ -1,43 +1,83 @@
+/* ===============================
+   FONT + ROOT VARIABLES
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* COLOR SCHEME #1 — Blue & Orange */
+    --primary: #1E40AF;
+    --accent: #F97316;
+    --bg: #ffffff;
+    --text: #1F2937;
+    --muted: #6B7280;
+
+    --nav-bg: rgba(30, 64, 175, 0.95);
+    --card-bg: rgba(255, 255, 255, 0.92);
+    --border-radius: 10px;
+}
+
+/* ===============================
+   GLOBAL
+================================ */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    color: white;
-    animation: fadeIn 0.6s ease;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    background: var(--bg);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
+/* ===============================
+   BACKGROUND IMAGE
+================================ */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     background:
-      linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-      url('primos1.png') center/cover;
-    filter: blur(8px);
+        linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+        url('primos1.png') center / cover no-repeat;
     z-index: -1;
+    filter: blur(8px);
 }
 
+/* ===============================
+   NAVIGATION
+================================ */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px 10%;
-    background: rgba(0,46,91,.95);
+    align-items: center;
+    padding: 18px 8%;
+    background: var(--nav-bg);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 22px;
+    padding: 0;
+    margin: 0;
 }
 
 nav a {
-    color: #ff6b00;
-    text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    color: #fff;
     position: relative;
 }
 
@@ -48,9 +88,9 @@ nav a::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #ff6b00;
+    background: var(--accent);
     transform: scaleX(0);
-    transition: transform .3s ease;
+    transition: transform 0.25s ease;
 }
 
 nav a:hover::after,
@@ -58,17 +98,39 @@ nav a.active::after {
     transform: scaleX(1);
 }
 
+/* ===============================
+   CONTAINERS
+================================ */
 .container {
-    padding: 60px 10%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 8%;
 }
 
+h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.75;
+    color: var(--text);
+}
+
+/* ===============================
+   HERO
+================================ */
 .hero {
-    height: 85vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    position: relative;
 }
 
 .hero-content {
@@ -77,113 +139,148 @@ nav a.active::after {
 }
 
 .hero-content h1 {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    color: #fff;
     text-transform: uppercase;
-    text-shadow:
-        0 4px 20px rgba(0,0,0,0.9);
+    letter-spacing: 4px;
 }
 
 .hero-content p {
-    font-size: 1.4rem;
-    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.25rem;
     margin-bottom: 35px;
-    color: rgba(255,255,255,0.95);
 }
 
-.hero-btn {
-    font-size: 1.1rem;
-    padding: 14px 40px;
-    box-shadow:
-        0 10px 30px rgba(255,107,0,0.35);
-}
-
-.hero-btn:hover {
-    transform: translateY(-3px);
-    box-shadow:
-        0 18px 40px rgba(255,107,0,0.45);
-}
-
+/* ===============================
+   BUTTON
+================================ */
 .btn {
-    background: #ff6b00;
-    padding: 12px 30px;
-    color: white;
-    text-decoration: none;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 40px;
     border-radius: 6px;
-    font-weight: bold;
+    font-weight: 700;
+    display: inline-block;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(249, 115, 22, 0.35);
+}
+
+/* ===============================
+   GRIDS
+================================ */
 .features,
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.feature {
-    background: rgba(255,255,255,.08);
-    padding: 25px;
-    border-radius: 10px;
-    transition: transform .3s ease;
-}
-
-.feature:hover {
-    transform: translateY(-6px);
-}
-
-.testimonials h1 {
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: rgba(255,255,255,0.75);
-    margin-bottom: 50px;
-    max-width: 600px;
-}
-
+.service-grid,
 .testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* ===============================
+   CARDS
+================================ */
+.feature,
+.testimonial {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
 }
 
 .testimonial {
-    background: rgba(0, 0, 0, 0.35);
-    border-left: 4px solid #ff6b00;
-    padding: 30px 25px;
-    border-radius: 6px;
-    transition: transform 0.3s ease;
-}
-
-.testimonial:hover {
-    transform: translateY(-4px);
-}
-
-.quote {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.quote::before {
-    content: "“";
-    font-size: 4rem;
-    position: absolute;
-    left: -20px;
-    top: -20px;
-    color: rgba(255,255,255,0.15);
+    border-left: 4px solid var(--accent);
 }
 
 .author {
-    display: block;
-    font-weight: bold;
-    color: #ff6b00;
+    font-weight: 700;
+    color: var(--primary);
 }
 
 .role {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.65);
+    color: var(--muted);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+    background: #0f172a;
+    color: #cbd5f5;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.footer-bottom {
+    font-size: 0.9rem;
+}
+
+/* =================================================
+   📱 MOBILE OPTIMIZATION (Phones)
+================================================= */
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 5%;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        letter-spacing: 1.5px;
+    }
+
+    .container {
+        padding: 60px 6%;
+    }
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero-content h1 {
+        letter-spacing: 2px;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 14px 28px;
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* =================================================
+   📲 TABLET OPTIMIZATION
+================================================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    nav {
+        padding: 18px 6%;
+    }
+
+    .container {
+        padding: 70px 7%;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
 }
