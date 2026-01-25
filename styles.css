@@ -63,17 +63,46 @@ nav a.active::after {
 }
 
 .hero {
-    height: 80vh;
+    height: 85vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
 }
 
-.hero-card {
-    background: rgba(255,255,255,.1);
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
+.hero-content {
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-shadow:
+        0 4px 20px rgba(0,0,0,0.9);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+    color: rgba(255,255,255,0.95);
+}
+
+.hero-btn {
+    font-size: 1.1rem;
+    padding: 14px 40px;
+    box-shadow:
+        0 10px 30px rgba(255,107,0,0.35);
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 18px 40px rgba(255,107,0,0.45);
 }
 
 .btn {
