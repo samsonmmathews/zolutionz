@@ -192,10 +192,16 @@ nav a.active::after {
    GRIDS
 ================================ */
 .features,
-.service-grid,
 .testimonial-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-top: 50px;
 }
@@ -305,5 +311,9 @@ footer nav a {
     .container {
         margin: 60px auto;
         padding: 0 6%;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
     }
 }
