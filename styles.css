@@ -88,7 +88,7 @@ nav ul {
 
 nav a {
     font-weight: 600;
-    color: #fff;
+    color: var(--accent);
     position: relative;
     padding-bottom: 4px;
 }
@@ -128,7 +128,7 @@ nav a.active::after {
     font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 800;
     letter-spacing: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
 }
 
@@ -136,6 +136,11 @@ nav a.active::after {
     color: var(--muted);
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     margin-bottom: 35px;
+}
+
+#hero-tagline {
+    font-style: italic;
+    font-size: 1.2rem;
 }
 
 /* ===============================
@@ -248,7 +253,7 @@ footer nav {
 }
 
 footer nav a {
-    color: #FDBA74;
+    color: var(--accent);
     font-weight: 600;
     font-size: 0.9rem;
 }
